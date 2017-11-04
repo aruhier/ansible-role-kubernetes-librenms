@@ -1,0 +1,39 @@
+---
+
+kubernetes_librenms_image: "jarischaefer/docker-librenms:1.33.01"
+
+kubernetes_librenms_namespace: "default"
+kubernetes_librenms_deployment: "librenms-deployment"
+kubernetes_librenms_app: "librenms"
+kubernetes_librenms_configmap: "librenms"
+kubernetes_librenms_secret: "librenms"
+kubernetes_librenms_service: "librenms"
+
+kubernetes_librenms_node_selector: {}
+kubernetes_librenms_replicas: 1
+kubernetes_librenms_revision_history: 1
+
+kubernetes_librenms_resources:
+  limits:
+    memory: "756Mi"
+  requests:
+    memory: "256Mi"
+
+kubernetes_librenms_rrd_volume:
+  definition:
+
+kubernetes_librenms_setup_ingress: false
+kubernetes_librenms_ingress:
+  name: "librenms-ingress"
+  host: "librenms.example.com"
+  annotations:
+  tls:
+
+kubernetes_librenms_db:
+  host:
+  name:
+  user:
+  password:
+kubernetes_librenms_pollers: 16
+
+# vim: set ts=2 sw=2:

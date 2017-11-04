@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ kubernetes_librenms_ingress.name }}
+{% if kubernetes_librenms_ingress.annotations %}
+  annotations:
+    {{ kubernetes_librenms_ingress.annotations | to_nice_yaml | indent }}
+{% endif %}
+spec:
+{% if kubernetes_librenms_ingress.tls %}
+  tls:
+    {{ kubernetes_librenms_ingress.tls | to_nice_yaml | indent }}
+{% endif %}
+  rules:
+  - host: {{ kubernetes_librenms_ingress.host }}
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: {{ kubernetes_librenms_service }}
+          servicePort: 80

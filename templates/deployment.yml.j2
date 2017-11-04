@@ -1,0 +1,67 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: {{ kubernetes_librenms_deployment }}
+  labels:
+    app: {{ kubernetes_librenms_app }}
+spec:
+  replicas: {{ kubernetes_librenms_replicas }}
+  revisionHistoryLimit: {{ kubernetes_librenms_revision_history }}
+  selector:
+    matchLabels:
+      app: {{ kubernetes_librenms_app }}
+  template:
+    metadata:
+      labels:
+        app: {{ kubernetes_librenms_app }}
+    spec:
+      containers:
+      - image: {{ kubernetes_librenms_image }}
+        imagePullPolicy: Always
+        name: librenms
+        resources:
+          {{ kubernetes_librenms_resources | to_yaml | indent(10) }}
+        ports:
+        - containerPort: 80
+        env:
+        - name: BASE_URL
+          value: "/"
+        - name: DB_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: librenms
+              key: db.host
+        - name: DB_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: librenms
+              key: db.name
+        - name: DB_PASS
+          valueFrom:
+            secretKeyRef:
+              name: librenms
+              key: db.password
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: librenms
+              key: db.user
+        - name: POLLERS
+          valueFrom:
+            configMapKeyRef:
+              name: librenms
+              key: pollers
+        volumeMounts:
+        - mountPath: /opt/librenms/rrd
+          name: librenms-rrd
+{% if kubernetes_librenms_rrd_volume.subPath is defined %}
+          subPath: {{ kubernetes_librenms_rrd_volume.subPath }}
+{% endif %}
+{% if kubernetes_librenms_node_selector|default({}) %}
+      nodeSelector:
+        {{ kubernetes_librenms_node_selector | to_yaml | indent(8) }}
+{% endif %}
+      volumes:
+        - {"name": "librenms-rrd", {{ kubernetes_librenms_rrd_volume.definition | to_yaml }}}
+      restartPolicy: Always
+status: {}
