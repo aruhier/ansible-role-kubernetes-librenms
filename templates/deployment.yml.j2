@@ -2,6 +2,7 @@ apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
   name: {{ kubernetes_librenms_deployment }}
+  namespace: {{ kubernetes_librenms_namespace }}
   labels:
     app: {{ kubernetes_librenms_app }}
 spec:

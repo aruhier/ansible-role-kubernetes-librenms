@@ -2,6 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: {{ kubernetes_librenms_service }}
+  namespace: {{ kubernetes_librenms_namespace }}
 spec:
   selector:
     app: {{ kubernetes_librenms_app }}

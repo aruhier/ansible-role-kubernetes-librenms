@@ -2,6 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ kubernetes_librenms_ingress.name }}
+  namespace: {{ kubernetes_librenms_namespace }}
 {% if kubernetes_librenms_ingress.annotations %}
   annotations:
     {{ kubernetes_librenms_ingress.annotations | to_nice_yaml | indent }}
