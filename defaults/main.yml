@@ -13,6 +13,9 @@ kubernetes_librenms_node_selector: {}
 kubernetes_librenms_replicas: 1
 kubernetes_librenms_revision_history: 1
 
+kubernetes_librenms_deployment_labels: {}
+kubernetes_librenms_deployment_annotations: {}
+
 kubernetes_librenms_resources:
   limits:
     memory: "756Mi"

@@ -27,6 +27,11 @@ kubernetes_librenms_revision_history: 1
 # Node selector
 kubernetes_librenms_node_selector: {}
 
+# Add custom labels in the deployment metadata section
+kubernetes_librenms_deployment_labels: {}
+# Add custom annotations in the deployment metadata section
+kubernetes_librenms_deployment_annotations: {}
+
 kubernetes_librenms_resources:
   limits:
     memory: "756Mi"
