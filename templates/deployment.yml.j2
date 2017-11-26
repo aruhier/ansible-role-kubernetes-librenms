@@ -31,9 +31,15 @@ spec:
           {{ kubernetes_librenms_resources | to_yaml | indent(10) }}
         ports:
         - containerPort: 80
+        - containerPort: 514
         env:
         - name: BASE_URL
           value: "/"
+        - name: ENABLE_SYSLOG
+          valueFrom:
+            configMapKeyRef:
+              name: librenms
+              key: enable-syslog
         - name: DB_HOST
           valueFrom:
             configMapKeyRef:

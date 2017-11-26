@@ -66,6 +66,9 @@ kubernetes_librenms_db:
 
 # Number of pollers to run in cron
 kubernetes_librenms_pollers: 16
+
+# Enable syslog on port 514
+kubernetes_librenms_enable_syslog: 0
 ```
 
 Dependencies

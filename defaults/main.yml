@@ -1,6 +1,6 @@
 ---
 
-kubernetes_librenms_image: "jarischaefer/docker-librenms:1.33.01"
+kubernetes_librenms_image: "jarischaefer/docker-librenms:1.34"
 
 kubernetes_librenms_namespace: "default"
 kubernetes_librenms_deployment: "librenms-deployment"
@@ -38,5 +38,6 @@ kubernetes_librenms_db:
   user:
   password:
 kubernetes_librenms_pollers: 16
+kubernetes_librenms_enable_syslog: 0
 
 # vim: set ts=2 sw=2:
