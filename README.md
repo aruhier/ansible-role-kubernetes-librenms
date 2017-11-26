@@ -34,7 +34,7 @@ kubernetes_librenms_deployment_annotations: {}
 
 kubernetes_librenms_resources:
   limits:
-    memory: "1.5Gi"
+    memory: "756Mi"
   requests:
     memory: "256Mi"
 
