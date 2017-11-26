@@ -35,35 +35,35 @@ spec:
         env:
         - name: BASE_URL
           value: "/"
-        - name: ENABLE_SYSLOG
-          valueFrom:
-            configMapKeyRef:
-              name: librenms
-              key: enable-syslog
         - name: DB_HOST
           valueFrom:
             configMapKeyRef:
-              name: librenms
+              name: {{ kubernetes_librenms_configmap }}
               key: db.host
         - name: DB_NAME
           valueFrom:
             configMapKeyRef:
-              name: librenms
+              name: {{ kubernetes_librenms_configmap }}
               key: db.name
         - name: DB_PASS
           valueFrom:
             secretKeyRef:
-              name: librenms
+              name: {{ kubernetes_librenms_secret }}
               key: db.password
         - name: DB_USER
           valueFrom:
             secretKeyRef:
-              name: librenms
+              name: {{ kubernetes_librenms_secret }}
               key: db.user
+        - name: ENABLE_SYSLOG
+          valueFrom:
+            configMapKeyRef:
+              name: {{ kubernetes_librenms_configmap }}
+              key: enable-syslog
         - name: POLLERS
           valueFrom:
             configMapKeyRef:
-              name: librenms
+              name: {{ kubernetes_librenms_configmap }}
               key: pollers
         volumeMounts:
         - mountPath: /opt/librenms/rrd
