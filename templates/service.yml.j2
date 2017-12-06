@@ -8,8 +8,8 @@ spec:
     app: {{ kubernetes_librenms_app }}
   ports:
     - port: 80
-      targetPort: 80
+      targetPort: http
       name: http
     - port: 514
-      targetPort: 514
+      targetPort: syslog
       name: syslog
