@@ -38,13 +38,13 @@ spec:
           httpGet:
             path: /
             port: http
-          initialDelaySeconds: 10
+          initialDelaySeconds: 20
           periodSeconds: 10
         livenessProbe:
           httpGet:
             path: /
             port: http
-          initialDelaySeconds: 30
+          initialDelaySeconds: 60
           periodSeconds: 10
         env:
         - name: BASE_URL
