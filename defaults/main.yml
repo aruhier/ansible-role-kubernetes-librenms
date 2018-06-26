@@ -1,6 +1,6 @@
 ---
 
-kubernetes_librenms_image: "jarischaefer/docker-librenms:1.36"
+kubernetes_librenms_image: "jarischaefer/docker-librenms:1.40"
 
 kubernetes_librenms_namespace: "default"
 kubernetes_librenms_deployment: "librenms-deployment"
