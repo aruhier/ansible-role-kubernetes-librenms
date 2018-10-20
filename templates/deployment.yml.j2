@@ -49,6 +49,11 @@ spec:
         env:
         - name: BASE_URL
           value: "/"
+        - name: APP_KEY
+          valueFrom:
+            secretKeyRef:
+              name: {{ kubernetes_librenms_secret }}
+              key: app_key
         - name: DB_HOST
           valueFrom:
             configMapKeyRef:

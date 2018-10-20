@@ -57,6 +57,9 @@ kubernetes_librenms_rrd_volume:
 
 ### Librenms options ###
 
+# Randomly generated Librenms secret key
+kubernetes_librenms_app_key:
+
 # Librenms database
 kubernetes_librenms_db:
   host:
@@ -85,6 +88,7 @@ Example Playbook
 - hosts: kube-master
   run_once: true
   vars:
+    kubernetes_librenms_app_key: "SECRET_KEY"
     kubernetes_librenms_rrd_volume:
       subPath: rrd
       definition:
